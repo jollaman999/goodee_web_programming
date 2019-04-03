@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function stringadd(input) {
+        document.calc.result.value = document.calc.result.value + input;
+}
+
+function get_result() {
+	document.calc.result.value = eval(document.calc.result.value);
+}
+</script>
+</head>
+<body>
+<form name="calc">
+<table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+            <td colspan="4"><input type="text" name="result"></td>
+    </tr>
+    <tr>
+            <td><input type="button" name="7" value="7" onclick="stringadd(7)"></td>
+            <td><input type="button" name="8" value="8" onclick="stringadd(8)"></td>
+            <td><input type="button" name="9" value="9" onclick="stringadd(9)"></td>
+            <td><input type="button" name="x" value="*" onclick="stringadd('*')"></td>
+    </tr>
+    <tr>
+            <td><input type="button" name="4" value="4" onclick="stringadd(4)"></td>
+            <td><input type="button" name="5" value="5" onclick="stringadd(5)"></td>
+            <td><input type="button" name="6" value="6" onclick="stringadd(6)"></td>
+            <td><input type="button" name="-" value="-" onclick="stringadd('-')"></td>
+    </tr>
+    <tr>
+            <td><input type="button" name="1" value="1" onclick="stringadd(1)"></td>
+            <td><input type="button" name="2" value="2" onclick="stringadd(2)"></td>
+            <td><input type="button" name="3" value="3" onclick="stringadd(3)"></td>
+            <td><input type="button" name="+" value="+" onclick="stringadd('+')"></td>
+    </tr>
+    <tr>
+            <td><input type="button" name="0" value="0" onclick="stringadd(0)"></td>
+            <td><input type="button" name="." value="." onclick="stringadd('.')"></td>
+            <td><input type="button" name="=" value="=" onclick="get_result()"></td>
+            <td><input type="button" name="/" value="/" onclick="stringadd('/')"></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

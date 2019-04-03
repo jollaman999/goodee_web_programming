@@ -1,0 +1,34 @@
+<!DOCTYPE html> <!--  html5 작성됨. -->
+<!-- /WebContent/htmlex1.html-->
+<!-- 주석 표현 -->
+<html> <!-- 모든 html 페이지는 html 태그로 시작하고 끝남. => 루트 태그 -->
+<head>
+<meta charset="UTF-8"> <!-- 페이지의 인코딩 설정 -->
+<title>HTML5 기본</title>
+<!-- style 내부에 사용되는 언어 : CSS -->
+<style type="text/css">
+    body { /* css의 주석 표현 */
+        color: #DDDDDD;
+        background: #6622FF;
+    }
+</style>
+</head>
+<body>
+<input type="button" onclick="button1_click();" value="눌러봐"/>
+<input type="text" onclick="button1_click();" value="입력해봐"/>
+<script type="text/javascript">
+// 자바스크립트의 영역임
+/* 자바스크립트의 주석은 자바와 같다. */
+function button1_click() {
+    alert('Hello world 출력하기 h1 ~ h6 까지');
+}
+    
+</script>
+    <h1>Hello World</h1> <!-- 글자의 크기를 크게 지정 1~6 까지 표시  -->
+    <h2>Hello World</h2>
+    <h3>Hello World</h3>
+    <h4>Hello World</h4>
+    <h5>Hello World</h5>
+    <h6>Hello World</h6>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.BoardMapper">
+    <select id="count" parameterType="map" resultType="int">
+        select count(*) from board
+        <if test="column != null and find != null">
+            <choose>
+                <when test="col2 != null">
+                    <choose>
+                        <when test="ignorecase != null">
+                            where ${column} like binary '%${find}%' or ${col2} like binary '%${find}%'
+                        </when>
+                        <otherwise>
+                            where ${column} like '%${find}%' or ${col2} like '%${find}%'
+                        </otherwise>
+                    </choose>
+                </when>
+                <otherwise>
+                    <choose>
+                        <when test="ignorecase != null">
+                            where ${column} like binary '%${find}%'
+                        </when>
+                        <otherwise>
+                            where ${column} like '%${find}%'
+                        </otherwise>
+                    </choose>
+                </otherwise>
+            </choose>
+        </if>
+    </select>
+    <select id="select" parameterType="map" resultType="Board">
+        select * from board
+        <where>
+            <if test="num != null">
+                and num = #{num}
+            </if>
+            <if test="column != null and find != null">
+                <choose>
+                    <when test="col2 != null">
+                        <choose>
+                            <when test="ignorecase != null">
+                                and (${column} like binary '%${find}%' or ${col2} like binary '%${find}%')
+                            </when>
+                            <otherwise>
+                                and (${column} like '%${find}%' or ${col2} like '%${find}%')
+                            </otherwise>
+                        </choose>
+                    </when>
+                    <otherwise>
+                        <choose>
+                            <when test="ignorecase != null">
+                                and ${column} like binary '%${find}%'
+                            </when>
+                            <otherwise>
+                                and ${column} like '%${find}%'
+                            </otherwise>
+                        </choose>
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+        <if test="pageNum != null">
+            <if test="limit != null">
+                order by ref desc, refstep asc limit #{pageNum}, #{limit}
+            </if>
+        </if>
+    </select>
+</mapper>

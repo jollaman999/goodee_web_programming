@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS 선택자 연습</title>
+<style>
+/*
+ 태그명 { 속성 : 속성값; 속성:속성값; ....}
+ .class속성의 값 { 속성: 속성값; 속성: 속성값; ....}
+ #id속성의 값 { 속성: 속성값; 속성: 속성값; ....}
+*/
+/* li 태그들을 말머리를 10진수로 표시 */
+    li {list-style-type: decimal;}
+/* h2 태그들의 글자크기를 20px로 설정하고, 글자색상을 오렌지로 바꿔 */
+    h2 {font-size: 20px; color: orange;}
+/* p 태그들의 글자색상을 파랑색으로 설정 */
+    p {color: blue;}
+/* class 속성의 값이 l1 태그들의 말머리를 출력하지 않기 */
+    .L1 {list-style-type: none;}
+/* h3 태그의 글자색을 빨강색으로 설정하기 */
+    h3 {color: red;}
+/* id 속성의 값이 h3 태그의 글자색을 분홍색으로 설정하기. */
+	#h3 {color: pink;}
+</style>
+</head>
+<body>
+    <ul>
+        <li>항목1</li>
+        <li>항목2</li>
+        <li>항목3</li>
+    </ul>
+    <ul class="L1">
+        <li class="L1">항목1</li>
+        <li class="L1">항목2</li>
+        <li class="L1">항목3</li>
+    </ul>
+    <h2>CSS는 웹 문서에서 디자인과 내용을 분리할 수 있는 언어입니다.</h2>
+    <p>웹표준에 의한 웹문서는 디자인과 내용을 분리하도록 합니다.</p>
+    <p>내용은 HTML을 이용해 구현하고, 디자인은 CSS를 이용하여 꾸밀 수 있습니다.</p>
+    <h1 id="h3">CSS</h1>
+    <h3 id="h3">H3태그를 이용하여 ID='h3' 속성을 선택하기</h3>
+    <h3 id="h3">H3태그를 이용하여 ID='h3' 속성을 선택하기</h3>
+</body>
+</html>

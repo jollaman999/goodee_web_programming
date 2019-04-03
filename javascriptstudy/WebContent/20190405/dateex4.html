@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>초를 시분초로 환산하기</title>
+<link rel="stylesheet" href="http://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript">
+function calc() {
+    hour.value = parseInt(input.value / 3600);
+    min.value = parseInt(input.value % 3600 / 60);
+    sec.value = parseInt(input.value % 3600 % 60);
+}
+</script>
+</head>
+<body>
+<table class="w3-table-all">
+    <tr>
+        <td>입력초</td>
+        <td><input type="text" id="input" class="w3-input"></td>
+        <td><input type="button" class="w3-button" value="시분초로 환산하기" onclick="calc()"></td>
+    </tr>
+    <tr>
+        <th>시</th>
+        <th>분</th>
+        <th>초</th>
+    </tr>
+    <tr>
+        <td><input type="text" id="hour" class="w3-input"></td>
+        <td><input type="text" id="min" class="w3-input"></td>
+        <td><input type="text" id="sec" class="w3-input"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메세지 창 3종류 예제</title>
+</head>
+<body>
+<form name="f">
+<input type="radio" name="dbox"
+    onclick="this.form.echo.value=alert('alert 메세지 창 호출')">
+alert 메세지 창 호출<br>
+<input type="radio" name="dbox"
+    onclick="this.form.echo.value=confirm('confirm 메세지 창 호출')">
+confirm 메세지 창 호출<br>
+<input type="radio" name="dbox"
+    onclick="this.form.echo.value=prompt('prompt 메세지 창 호출')">
+prompt 메세지 창 호출<br>
+<input type="text" name="echo">
+</form>
+</body>
+</html>

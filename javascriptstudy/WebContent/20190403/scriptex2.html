@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<!--
+DOM (Document Object Model) Tree
+최상단의 window 는 생략이 가능하더라. 
+ -->
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function valuecopy() {
+    t1 = document.f.t1.value;
+    document.f.t2.value = t1;
+}
+</script>
+</head>
+<body>
+<h3>버튼을 클릭하면 첫번째 창의 내용을 두번째 창으로 복사합니다.</h3>
+<form name="f">
+    <input type="text" name="t1"><br>
+    <input type="text" name="t2"><br>
+    <input type="button" value="복사" onclick="valuecopy()"><br>
+</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function numadd() {
+	//document.f.result.value = parseInt(document.f.n1.value) + parseInt(document.f.n2.value);
+	document.f.result.value = eval(document.f.n1.value + '+' + document.f.n2.value);
+}
+
+function numadd2() {
+	document.f2.result.value = eval(document.f2.n1.value + document.f2.op.value + document.f2.n2.value);
+}
+</script>
+</head>
+<body>
+<h3>두수를 입력받아 더하기 한 결과를 입력하고 화면에 출력하기</h3>
+<form name="f">
+    <input type="text" name="n1">+
+    <input type="text" name="n2"><br>
+    결과 : <input type="text" name="result">
+    <input type="button" value="결과보기" onclick="numadd()"><br>
+</form>
+<h3>두수를 입력받아 연산의 결과를 결과 입력란에 출력하기</h3>
+<form name="f2">
+    <input type="text" name="n1" size="5">
+    <select name="op">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+    </select>
+    <input type="text" name="n2" size="5">=
+    <input type="text" name="result" size="5">
+    <input type="button" value="결과보기" onclick="numadd2()"><br>
+</form>
+</body>
+</html>

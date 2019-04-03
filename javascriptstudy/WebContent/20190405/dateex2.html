@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>달력 출력하기</title>
+<link rel="stylesheet" href="http://www.w3schools.com/w3css/4/w3.css">
+<style type="text/css">
+.sun {
+    color: red;
+}
+
+.sat {
+    color: blue;
+}
+</style>
+<script type="text/javascript">
+function show_cal() {
+	var year = parseInt(y.value);
+	var month = parseInt(m.value);
+	
+	cal1 = new Date(year, month-1, 1); // 선택한 달의 1일
+    cal2 = new Date(year, month, 1); // 선택한 다음달의 1일
+    // cal2.getTime() : 1970년 이후부터 2019-05-01 까지의 시간을 밀리초
+	cal2.setTime(cal2.getTime() - (1000 * 60 * 60 * 24)); // 선택한 달의 마지막날
+	
+	var html = "<table class='w3-table-all'><caption>"
+			+ year + "년" + month + "월</caption>";
+    html += "<tr class='w3-blue'><th class=\"sun\">일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th class=\"sat\">토</th></tr>";
+    
+    var day = 1;
+
+    //html += cal1.getDay();
+    html += "<tr>"
+    for (var i = 0; i < 7; i++) {
+        if (i == 0)
+            html += "<td class=\"sun\">";
+        else if (i == 6)
+            html += "<td class=\"sat\">";
+        else
+            html += "<td>";
+        if (i >= cal1.getDay())
+            html += day++;
+        else
+            html += "&nbsp;";
+        html += "</td>"
+    }
+    html += "</tr>"
+
+    for (var i = 0; i < 5; i++) {
+        html += "<tr>"
+        for (var j = 0; j < 7; j++) {
+            if (j == 0)
+                html += "<td class=\"sun\">";
+            else if (j == 6)
+                html += "<td class=\"sat\">";
+            else
+                html += "<td>";
+            if (day > cal2.getDate())
+                html += "&nbsp;";
+            else
+                html += day++;
+            html += "</td>"
+        }
+        html += "</tr>"
+    }
+    
+    html += "</table>"
+    cal.innerHTML = html;
+}
+</script>
+</head>
+<body>
+<select id="y">
+    <option>2015</option>
+    <option>2016</option>
+    <option>2017</option>
+    <option>2018</option>
+    <option>2019</option>
+    <option>2020</option>
+</select>
+<select id="m">
+    <option value="1">1월</option>
+    <option value="2">2월</option>
+    <option value="3">3월</option>
+    <option value="4">4월</option>
+    <option value="5">5월</option>
+    <option value="6">6월</option>
+    <option value="7">7월</option>
+    <option value="8">8월</option>
+    <option value="9">9월</option>
+    <option value="10">10월</option>
+    <option value="11">11월</option>
+    <option value="12">12월</option>
+</select>
+<input type="button" value="달력보기" onclick="show_cal()">
+<br>
+<span id="cal">
+</span>
+</body>
+</html>

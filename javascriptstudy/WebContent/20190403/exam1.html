@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>document.write 함수예제: 계산하기</title>
+</head>
+<body>
+<script type="text/javascript">
+function getInt() { // 0~9 까지의 임의의 정수 리턴
+    return Math.floor(Math.random() * 1000) % 10;
+}
+var op = new Array("+", "-", "*", "/");
+function getOp() { // 0, 1, 2, 3 중 하나 (op 배열에서 하나의 요소 선택)
+    return op[Math.floor(Math.random() * 4)];
+}
+var tcnt = 0;
+var cnt = 0;
+tcnt = prompt("맞추실 문제의 갯수를 입력하세요", 0);
+
+for (var i = 0; i < tcnt; i++) {
+    str = getInt() + getOp() + getInt();
+    // ans : 입력된 값 저장
+    ans = prompt(str + " 식의 정답을 입력하세요", 0); //,0 기본값 설정
+
+    // res : 시스템이 계산한 정답
+    res = eval(str);
+    if (res != ans) {
+        document.write("입력한 값은" + ans + " 입니다.")
+        document.write("<font color='red' size='5'>" + "틀렸습니다.</font>")
+        document.write(str + "=" + res + "입니다.<br>")
+    } else {
+        document.write("<font color='blue' size='7'>" + "정답입니다.</font><br>")
+        cnt++;
+    }
+}
+document.write(tcnt + "문제 중 총" + cnt +"개를 맞추셨습니다.")
+
+
+</script>
+</body>
+</html>

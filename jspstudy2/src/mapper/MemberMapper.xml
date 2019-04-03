@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.MemberMapper">
+    <select id="select" parameterType="map" resultType="Member">
+        select * from member
+        <where>
+            <if test="id != null">
+                and id = binary #{id}
+            </if>
+            <if test="column != null and find != null">
+                <choose>
+                    <when test="ignorecase != null">
+                        and ${column} like binary '%${find}%'
+                    </when>
+                    <otherwise>
+                        and ${column} like '%${find}%'
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상태 선택자 예제</title>
+<style type="text/css">
+/* input 태그가 입력가능한 상태인 경우 배경색을 흰색으로 설정 */
+input:enabled {background-color: white;}
+/* input 태그가 선택 상태인 경우 배경색을 오렌지색으로 설정 */
+input:focus {background-color: orange;}
+/* input 태그가 불입력가능한 상태인 경우 배경색을 회색으로 설정 */
+input:disabled {background-color: gray;}
+</style>
+</head>
+<body>
+    <h2>입력이 가능한 input 태그</h2>
+    <input />
+    <h2>입력이 불가능한 input 태그</h2>
+    <input disabled="disabled"/>
+</body>
+</html>

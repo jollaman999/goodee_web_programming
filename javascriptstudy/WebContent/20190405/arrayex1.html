@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>도시 선택 하기</title>
+<script type="text/javascript">
+// 1차원 배열
+sies = new Array(new Option("서울시"), new Option("경기도"),
+                    new Option("충청남도"), new Option("부산시"));
+// 2차원 배열
+gues = new Array();
+
+for (var i = 0; i < 4; i++) {
+    gues[i] = new Array();
+}
+
+//[] => 배열 표시. 2차원 배열 설정.
+names = [["강남구", "서초구", "구로구", "금천구"],
+         ["이천시", "광주시", "부천구", "안양구"],
+         ["천안시", "유성시", "아산시", "논산시"],
+         ["강서구", "해운대구", "영도구", "동구"]]
+
+for (var i = 0; i < names.length; i++) {
+    for (var j = 0; j < names[i].length; j++) {
+        gues[i][j] = new Option(names[i][j]);
+    }
+}
+
+// f.si.selectedIndex : si select 태그의 선택된 index
+function selectgu(f) {
+    for (var i = 0; i < gues[f.si.selectedIndex].length; i++) {
+        f.gu.options[i] = gues[f.si.selectedIndex][i];
+    }
+}
+
+window.onload = function() {
+    for (i = 0; i < sies.length; i++) {
+        document.f.si.options = null;
+        document.f.si.options[i] = sies[i];
+    }
+    for (i = 0; i < gues[0].length; i++) {
+        document.f.gu.options = null;
+        document.f.gu.options[i] = gues[0][i];
+    }
+}
+</script>
+</head>
+<body>
+<!-- this.form : si 태그가 속한 form 객체 -->
+<form name="f">
+    <select name="si" onchange="selectgu(this.form)">
+    </select>
+    <select name="gu">
+    </select>
+</form>
+</body>
+</html>

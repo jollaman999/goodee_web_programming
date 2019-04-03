@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date 객체 예제</title>
+<script type="text/javascript">
+now = new Date();
+</script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <script type="text/javascript">
+            document.write(now + "<br><br>");
+            document.write(now.toGMTString() + "<br><br>");
+            document.write(now.toLocaleString() + "<br><br>");
+            document.write(now.toString() + "<br><br><hr>");
+            document.write("년도 : " + now.getYear() + "<br>");
+            document.write("월(0~11) : " + now.getFullYear() + "<br>");
+            document.write("일 : " + now.getDate() + "<br>");
+            document.write("요일 (0~6) : " + now.getDay() + "<br>");
+            document.write("시간 : " + now.getHours() + "<br>");
+            document.write("분 : " + now.getMinutes() + "<br>");
+            document.write("초 : " + now.getSeconds() + "<br>");
+            document.write("getTime() : 1970년 부터 지금까지"
+                            + now.getTime() + "msec <br><hr>");
+            now.setTime(now.getTime() + (1000 * 60 * 60 * 24));
+            document.write("다음일 : " + now() + "<br>");
+            </script>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/../out/test/jspstudy_my"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="cos.jar" scope="PROVIDED"/>
+	<lib name="jstl-1.2.jar" scope="PROVIDED"/>
+	<lib name="Tomcat 9.0.19" scope="PROVIDED"/>
+	<levels>
+		<level name="mybatisjava_lib" value="project"/>
+		<level name="sitemesh-2.4.2" value="project"/>
+		<level name="Tomcat 9.0.19" value="application_server_libraries"/>
+	</levels>
+</component>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+    1. 객체 생성하기
+    2. 태그 위치 설정하기
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jolla-Dodge</title>
+<script type="text/javascript">
+function nextRandomInteger(limit) {
+    return Math.round(Math.random() * limit);
+}
+
+function randomSpeed(maxSpeed) {
+    return Math.random() * maxSpeed - Math.random() * maxSpeed;
+}
+
+var canvasWidth = 700;
+var canvasHeight = 500;
+
+var game_over_gap = 12;
+
+var dodges = 60;
+var sec = 0;
+
+var movingTexts = [];
+var movingmy;
+
+var gameover;
+
+// 객체 생성하기
+function MovingText() {
+    this.x = nextRandomInteger(canvasWidth);
+    this.y = nextRandomInteger(canvasHeight) ;
+    this.vX = randomSpeed(2);
+    this.vY = randomSpeed(2);
+    this.body = document.createElement("h1");
+    this.body.innerHTML = ".";
+    this.body.setAttribute("style", "background-color: white");
+    this.body.style.position = "absolute";    
+    document.body.appendChild(this.body);
+}
+
+function MovingMy() {
+    this.myx = canvasWidth / 2;
+    this.myy = canvasHeight / 2;
+    this.body = document.createElement("h1");
+    this.body.innerHTML = "■";
+    this.body.setAttribute("style", "background-color: white");
+    this.body.style.position = "absolute";    
+    document.body.appendChild(this.body);
+}
+
+function calc_x(dot_x, my_x) {
+    var gap_x = dot_x - my_x;
+    if (gap_x < 0)
+        gap_x = -gap_x;
+    
+    if (gap_x < game_over_gap)
+        return true;
+}
+
+function calc_y(dot_y, my_y) {
+    var gap_y = dot_y - my_y;
+    if (gap_y < 0)
+        gap_y = -gap_y;
+    
+    if (gap_y < game_over_gap)
+        return true;
+}
+
+MovingText.prototype.move = function() {
+	if (this.x < 0 || this.x > canvasWidth) this.vX *= -1;
+    if (this.y < 0 || this.y > canvasHeight) this.vY *= -1;
+    this.x += this.vX;
+    this.y += this.vY;
+    this.body.style.left = this.x + "px";
+    this.body.style.top = this.y + "px";
+
+    for (var i in movingTexts) {
+    	//alert(parseInt(movingTexts[i].x));
+        if (calc_x(parseInt(movingTexts[i].x), parseInt(movingmy.myx)) &&
+        calc_y(parseInt(movingTexts[i].y), parseInt(movingmy.myy))) {
+        	gameover = true;
+        	return;
+        }
+    }
+}
+
+MovingMy.prototype.move = function(keycode) {
+    var movegap = 5;
+
+    if (keycode == 37) {// left
+        if (this.myx > 0)
+        	this.myx += -movegap;
+        event.returnValue = false;
+    } else if (keycode == 39) { // right
+        if (this.myx < canvasWidth)
+        	this.myx += movegap;
+        event.returnValue = false;
+    } else if (keycode == 38) { // up
+        if (this.myy > 0)
+        	this.myy -= movegap;
+        event.returnValue = false;
+    } else if (keycode == 40) { // down
+        if (this.myy < canvasHeight)
+        	this.myy += movegap;
+        event.returnValue = false;
+    }
+    
+    this.body.style.left = this.myx + "px";
+    this.body.style.top = this.myy + "px";
+}
+
+window.onload = function() {
+    for (var i = 0; i < dodges; i++) {
+        movingTexts.push(new MovingText());
+    }
+
+    var game = setInterval(function() {
+        for (var i in movingTexts) {
+        	if (gameover) {
+        		sec = sec / 60;
+        		alert("Game Over! " + sec.toFixed(2) + "초");
+        		clearInterval(game);
+        		return;
+        	}
+            movingTexts[i].move();
+        }
+        sec++;
+    }, 1000/60);
+
+    movingmy = new MovingMy();
+    movingmy.move(null);
+}
+
+window.onkeydown = function() {
+    var keycode = event.keyCode;
+    movingmy.move(keycode);
+}
+
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>간단한 윈도우 함수, document.write 함수 사용하기</title>
+</head>
+<body>
+<h3>window가 제공하는 내장 함수</h3>
+<hr>
+<script type="text/javascript">
+var i = 2;
+document.write('eval(3 + 4 * (5 - i))=' +  eval(3 + 4 * (5 - i)) + "<br>")
+/* isNaN : 숫자가 아니니? (문자면 true, 숫자면 false) */
+document.write('isNaN("한국")=' + isNaN("한국") + "<br>")
+document.write('isNaN("123")=' + isNaN("123") + "<br>")
+document.write('parseInt("10")=' + parseInt("10") + "<br>")
+/* 8진수로 출력 */
+document.write('parseInt("10", 8)=' + parseInt("10", 8) + "<br>")
+document.write('parseInt("12", 8)=' + parseInt("12", 8) + "<br>")
+/* 16진수로 출력 */
+document.write('parseInt("FF", 16)=' + parseInt("FF", 16) + "<br>")
+</script>
+</body>
+</html>

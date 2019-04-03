@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DIV 태그 : display 속성</title>
+<!--  #0000ff : RGB 방식 색상 표현
+		Red		: ff  00
+		Green	: ff  00
+		Blue	: ff  00
+		==================
+				    하양   검정
+-->
+<style>
+div {
+	margin: 20px;
+	border: 5px solid #00c;
+	border-radius: 50px; /* 타원 */
+}
+/* id 속성값이 inline인 태그의 하위태그 중 img 태그를 선택 */
+#inline img {display: inline; margin: 5px;}
+/* id 속성값이 block인 태그의 하위태그 중 img 태그를 선택 */
+#block img {display: block; margin: 5px;}
+nav ul {list-style-type: none;}
+nav ul li {
+	display: inline;
+}
+/* 밑줄제거, 파랑바탕에 흰글씨로 설정 */
+nav ul li a {
+	text-decoration: none;
+	color: white;
+	background-color: blue;
+}
+
+nav ul li a:visited {
+	text-decoration: none;
+	color: white;
+	background-color: blue;
+}
+</style>
+<!--
+	css 선택자   : 태그를 선택하기
+	태그         : 태그명 { 속성:속성값; .... }
+	class 속성값 : .속성값 { 속성:속성값; .... }
+	id 속성값    : #속성값 { 속성:속성값; .... }
+
+	어떤 class 속성이 가진 태그 선택하기 : 태그명.속성값 { .... }
+	어떤 id 속성이 가진 태그 선택하기 : 태그명#속성값 { .... }
+
+	두개 이상의 태그를 선택 : 태그1, 태그2 { .... }
+	계층상에서 자손태그를 선택  : 부모태그 자손태그 { .... }
+	계층상에서 자식태그를 선택  : 부모태그 > 자식태그 { .... }
+-->
+</head>
+<body>
+<div id="inline">
+	<img src="images/pic1.jpg">
+	<img src="images/pic2.jpg">
+	<img src="images/pic3.jpg">
+</div>
+<div id="block">
+	<img src="images/pic1.jpg">
+	<img src="images/pic2.jpg">
+	<img src="images/pic3.jpg">
+</div>
+<h3>메뉴만들기</h3>
+<nav>
+	<ul>
+		<li><a href="#">반려견종류</a></li>
+		<li><a href="#">입양하기</a></li>
+		<li><a href="#">건강돌보기</a></li>
+		<li><a href="#">더불어살기</a></li>
+	</ul>
+</nav>
+<h2>반려견종류</h2>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<decorators defaultdir="/decorator">
+    <decorator name="main" page="decorator.jsp">
+        <pattern>/model2/member/*</pattern>
+        <pattern>/model2/board/*</pattern>
+    </decorator>
+
+    <!-- 제외 설정 -->
+    <excludes>
+        <pattern>/model2/member/picture*</pattern>
+        <pattern>/model2/member/password*</pattern>
+        <pattern>/model2/member/idcheckForm.me*</pattern>
+    </excludes>
+</decorators>

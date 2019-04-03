@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="student">
+    <select id="count" resultType="int">
+        select count(*) from student
+    </select>
+    <select id="list" resultType="Student">
+        select * from student
+    </select>
+    <insert id="insert" parameterType="Student">
+        insert into student (studno, name, id, grade, jumin, major1) values (#{studno}, #{name}, #{id}, #{grade}, #{jumin}, #{major1})
+    </insert>
+    <update id="update" parameterType="Map">
+        update student set jumin=#{jumin} where studno=#{no}
+    </update>
+    <select id="selectone" resultType="Student" parameterType="int">
+        select * from student where studno=#{no}
+    </select>
+    <select id="selectname" resultType="Student" parameterType="string">
+        select * from student where name like "${value}%"
+    </select>
+    <select id="selectcol" resultType="Student" parameterType="map">
+        select * from student where ${col1} = #{val1} and ${col2} >= #{val2}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from student where studno = #{no}
+    </delete>
+<!--
+    #{value} : 값 + 자료형 인식 => 보안성이 좋다.
+    ${value} : 값으로 치환. 문자형 인식을 위해서는 ' ' 표시 해야 한다.
+-->
+</mapper>
