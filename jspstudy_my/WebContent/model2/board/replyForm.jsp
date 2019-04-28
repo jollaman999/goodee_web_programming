@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
 	1. 원글의 num을 파라미터로 받는다.
 	2. 원글의 num, ref, reflevel, refstep 정보를 저장
@@ -18,11 +19,13 @@ function reply_submit() {
         f.name.focus();
         return;
     }
-    if (f.pass.value == "") {
-        alert("비밀번호를 입력하세요")
-        f.pass.focus();
-        return;
-    }
+	<c:if test="${!board_member}">
+		if (f.pass.value == "") {
+			alert("비밀번호를 입력하세요")
+			f.pass.focus();
+			return;
+		}
+	</c:if>
     if (f.subject.value == "") {
         alert("제목을 입력하세요")
         f.subject.focus();
@@ -55,12 +58,21 @@ function reply_submit() {
 			<caption>게시판 답글 등록</caption>
 			<tr>
 				<td>글쓴이</td>
-				<td><input type="text" name="name"></td>
+				<c:choose>
+					<c:when test="${board_member}">
+						<td><input type="text" name="name" value="${name}" readonly></td>
+					</c:when>
+					<c:otherwise>
+						<td><input type="text" name="name"></td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="pass"></td>
-			</tr>
+			<c:if test="${!board_member}">
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="pass"></td>
+				</tr>
+			</c:if>
 			<tr>
 				<td>제목</td>
 				<td><input type="text" name="subject" value="[RE]${b.subject} "></td>

@@ -10,10 +10,19 @@
     <meta charset="UTF-8">
     <title>게시물 목록 보기</title>
     <script type="text/javascript">
-        function listcall(page) {
+        function resetcall(page) {
+            document.sf.pageNum.value = 1;
             document.sf.column.value = "";
             document.sf.find.value = "";
+            document.sf.submit();
+        }
+
+        function listcall(page) {
             document.sf.pageNum.value = page;
+            document.sf.submit();
+        }
+
+        function limitcall() {
             document.sf.submit();
         }
     </script>
@@ -29,7 +38,20 @@
             </c:when>
             <c:otherwise>
                 <tr>
-                    <td colspan="5" style="text-align:right">글개수 :${boardcount}
+                    <td colspan="5" style="text-align: right">
+                        표시할 글 갯수&nbsp;&nbsp;
+                        <select name="limit" onchange="limitcall(${limit})">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <script>
+                                document.sf.limit.value = "${limit}";
+                            </script>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;글 갯수 : ${boardcount}
                     </td>
                 </tr>
                 <tr>
@@ -144,7 +166,8 @@
                 </script>
                 &nbsp;
                 <input type="text" name="find" value="${param.find}" style="width: 300px" ;>
-                <input type="submit" value="검색">&nbsp;
+                <input type="submit" value="검색">
+                <input type="button" onclick="resetcall()" value="초기화">&nbsp;
                 <c:choose>
                     <c:when test="${param.ignorecase != null}">
                         <c:set var="ignorecase_checked" value="checked"/>

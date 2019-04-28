@@ -3,6 +3,8 @@ package action;
 import com.oreilly.servlet.MultipartRequest;
 import model.Board;
 import model.BoardDao;
+import model.Member;
+import model.MemberDao;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,23 +13,48 @@ import java.util.List;
 
 public class BoardAllAction {
     private BoardDao dao = new BoardDao();
+    private int limit = 10;
 
-    public ActionForward hello(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("hello", "Hello, World");
+    public ActionForward writeForm(HttpServletRequest request, HttpServletResponse response) {
+        String login = (String)request.getSession().getAttribute("login");
+
+        request.setAttribute("board_member", false);
+        if (login != null && login.length() != 0) {
+            Member m = new MemberDao().selectOne(login);
+            if (m != null) {
+                request.setAttribute("name", m.getName());
+                request.setAttribute("board_member", true);
+            }
+        } else {
+            request.removeAttribute("name");
+            request.removeAttribute("pass");
+        }
+
         return new ActionForward();
     }
 
     public ActionForward write(HttpServletRequest request, HttpServletResponse response) {
         String path = request.getServletContext().getRealPath("/") + "model2/board/file/";
-        MultipartRequest multi = null;
+        MultipartRequest multi;
 
         try {
             multi = new MultipartRequest(request, path, 10 * 1024 * 1024, "utf-8");
 
             Board b = new Board();
 
+            String login = (String)request.getSession().getAttribute("login");
+
+            request.setAttribute("board_member", false);
+            if (login != null && login.length() != 0) {
+                Member m = new MemberDao().selectOne(login);
+                if (m != null) {
+                    b.setPass(m.getPass());
+                    request.setAttribute("board_member", true);
+                }
+            } else {
+                b.setPass(multi.getParameter("pass"));
+            }
             b.setName(multi.getParameter("name"));
-            b.setPass(multi.getParameter("pass"));
             b.setSubject(multi.getParameter("subject"));
             b.setContent(multi.getParameter("content"));
             b.setFile1(multi.getFilesystemName("file1"));
@@ -56,7 +83,10 @@ public class BoardAllAction {
             pageNum = Integer.parseInt(request.getParameter("pageNum"));
         } catch (NumberFormatException e) {}
 
-        int limit = 13;
+        try {
+            limit = Integer.parseInt(request.getParameter("limit"));
+        } catch (NumberFormatException e) {}
+
         BoardDao dao = new BoardDao();
 
         String column = request.getParameter("column");
@@ -75,6 +105,7 @@ public class BoardAllAction {
         int startpage = 1; // 시작 페이지 번호 설정
 
         request.setAttribute("pageNum", pageNum);
+        request.setAttribute("limit", limit);
         request.setAttribute("startpage", startpage);
         request.setAttribute("endpage", endpage);
         request.setAttribute("boardcount", boardcount);
@@ -185,6 +216,15 @@ public class BoardAllAction {
         return new ActionForward(false, "../alert.jsp");
     }
 
+    public ActionForward replyForm(HttpServletRequest request, HttpServletResponse response) {
+        int num = Integer.parseInt(request.getParameter("num"));
+        Board board = dao.selectOne(num);
+
+        request.setAttribute("b", board);
+
+        return writeForm(request, response);
+    }
+
     public ActionForward reply(HttpServletRequest request, HttpServletResponse response) {
         String path = request.getServletContext().getRealPath("/") + "model2/board/file/";
         MultipartRequest multi = null;
@@ -193,6 +233,10 @@ public class BoardAllAction {
             multi = new MultipartRequest(request, path, 10 * 1024 * 1024, "utf-8");
 
             Board b = new Board();
+
+            String login = (String)request.getSession().getAttribute("login");
+
+            request.setAttribute("board_member", false);
 
             int pageNum = 1;
             try {
@@ -203,7 +247,15 @@ public class BoardAllAction {
             b.setNum(++num);
             b.setRef(Integer.parseInt(multi.getParameter("ref")));
             b.setName(multi.getParameter("name"));
-            b.setPass(multi.getParameter("pass"));
+            if (login != null && login.length() != 0) {
+                Member m = new MemberDao().selectOne(login);
+                if (m != null) {
+                    b.setPass(m.getPass());
+                    request.setAttribute("board_member", true);
+                }
+            } else {
+                b.setPass(multi.getParameter("pass"));
+            }
             b.setSubject(multi.getParameter("subject"));
             b.setContent(multi.getParameter("content"));
             b.setFile1(multi.getFilesystemName("file1"));

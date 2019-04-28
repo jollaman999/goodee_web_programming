@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +14,13 @@
                 f.name.focus();
                 return;
             }
-            if (f.pass.value == "") {
-                alert("비밀번호를 입력하세요")
-                f.pass.focus();
-                return;
-            }
+            <c:if test="${!board_member}">
+                if (f.pass.value == "") {
+                    alert("비밀번호를 입력하세요")
+                    f.pass.focus();
+                    return;
+                }
+            </c:if>
             if (f.subject.value == "") {
                 alert("제목을 입력하세요")
                 f.subject.focus();
@@ -45,12 +48,21 @@
         <caption>게시판 글쓰기</caption>
         <tr>
             <td>글쓴이</td>
-            <td><input type="text" name="name"></td>
+            <c:choose>
+                <c:when test="${board_member}">
+                    <td><input type="text" name="name" value="${name}" readonly></td>
+                </c:when>
+                <c:otherwise>
+                    <td><input type="text" name="name"></td>
+                </c:otherwise>
+            </c:choose>
         </tr>
-        <tr>
-            <td>비밀번호</td>
-            <td><input type="password" name="pass"></td>
-        </tr>
+        <c:if test="${!board_member}">
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="pass"></td>
+            </tr>
+        </c:if>
         <tr>
             <td>제목</td>
             <td><input type="text" name="subject"></td>
