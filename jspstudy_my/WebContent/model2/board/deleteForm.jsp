@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="게시글 삭제">
+                <input type="submit" value="게시글 삭제" class="w3-button w3-black">
             </td>
         </tr>
     </table>

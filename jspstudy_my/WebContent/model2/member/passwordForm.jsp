@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>비밀번호 변경 화면</title>
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/w3.css">
     <script type="text/javascript">
         function inchk(f) {
             if (f.chgpass.value != f.chgpass2.value) {
@@ -37,7 +38,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="비밀번호 변경"></td>
+                <input type="submit" value="비밀번호 변경" class="w3-button w3-black"></td>
         </tr>
     </table>
 </form>

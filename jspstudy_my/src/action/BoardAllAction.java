@@ -195,8 +195,8 @@ public class BoardAllAction {
             BoardDao dao = new BoardDao();
             Board dbBoard = dao.selectOne(b.getNum());
 
-            String msg = "비밀번호가 틀렸습니다!";
-            String url = "updateForm.do?num=" + b.getNum() + "&pageNum=" + pageNum;
+            String msg;
+            String url;
 
             if (b.getPass().equals(dbBoard.getPass())) {
                 if (dao.update(b) > 0) {
@@ -204,7 +204,11 @@ public class BoardAllAction {
                     url = "info.do?num=" + b.getNum() + "&pageNum=" + pageNum;
                 } else {
                     msg = "게시물 수정 실패!";
+                    url = "updateForm.do?num=" + b.getNum() + "&pageNum=" + pageNum;
                 }
+            } else {
+                msg = "비밀번호가 틀렸습니다!";
+                url = "updateForm.do?num=" + b.getNum() + "&pageNum=" + pageNum;
             }
 
             request.setAttribute("msg", msg);

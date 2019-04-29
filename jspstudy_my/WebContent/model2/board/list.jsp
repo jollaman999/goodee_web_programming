@@ -180,7 +180,7 @@
                 <input type="checkbox" name="ignorecase" ${ignorecase_checked}>대소문자 구분
             </td>
             <td style="border-width: 0px; text-align:center">
-                <a href="writeForm.do">[글쓰기]</a>
+                <a href="writeForm.do" class="w3-button w3-black">글쓰기</a>
             </td>
         </tr>
     </table>

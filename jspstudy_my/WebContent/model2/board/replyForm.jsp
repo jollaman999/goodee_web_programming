@@ -87,7 +87,7 @@ function reply_submit() {
 			</tr>
 			<tr>
 				<td colspan="2">
-					<a href="javascript:reply_submit()">[답변글등록]</a>
+					<a href="javascript:reply_submit()" class="w3-button w3-black">답변글등록</a>
 				</td>
 			</tr>
 		</table>

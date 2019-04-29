@@ -801,9 +801,9 @@ a {
     }
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1079px) {
     .w3-modal-content {
-        width: 900px
+        width: 1079px
     }
 
     .w3-hide-large {
@@ -821,7 +821,7 @@ a {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1080px) {
     .w3-sidebar.w3-collapse {
         display: none
     }

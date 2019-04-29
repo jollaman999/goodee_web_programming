@@ -40,10 +40,10 @@
     </tr>
     <tr>
         <td colspan="2">
-            <a href="replyForm.do?num=${num}&pageNum=${param.pageNum}">[답변]</a>
-            <a href="updateForm.do?num=${num}&pageNum=${param.pageNum}">[수정]</a>
-            <a href="deleteForm.do?num=${num}&pageNum=${param.pageNum}">[삭제]</a>
-            <a href="list.do?pageNum=${param.pageNum}">[목록]</a>
+            <a href="replyForm.do?num=${num}&pageNum=${param.pageNum}" class="w3-button w3-black">답변</a>&nbsp;&nbsp;
+            <a href="updateForm.do?num=${num}&pageNum=${param.pageNum}" class="w3-button w3-black">수정</a>&nbsp;&nbsp;
+            <a href="deleteForm.do?num=${num}&pageNum=${param.pageNum}" class="w3-button w3-black">삭제</a>&nbsp;&nbsp;
+            <a href="list.do?pageNum=${param.pageNum}" class="w3-button w3-black">목록</a>
         </td>
     </tr>
 </table>

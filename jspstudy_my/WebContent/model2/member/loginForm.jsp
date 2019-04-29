@@ -20,9 +20,8 @@
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="로그인">
-                <input type="button" value="회원가입"
-                       onclick="location.href='joinForm.me'">
+                <input type="submit" value="로그인" class="w3-button w3-black">&nbsp;&nbsp;&nbsp;
+                <input type="button" value="회원가입" class="w3-button w3-black" onclick="location.href='joinForm.me'">
             </td>
         </tr>
     </table>

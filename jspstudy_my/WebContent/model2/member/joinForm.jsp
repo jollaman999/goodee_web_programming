@@ -122,7 +122,7 @@
             <td colspan="2"><input type="text" name="email"></td>
         </tr>
         <tr>
-            <td colspan="3"><a href="javascript:reply_submit()">[회원가입]</a></td>
+            <td colspan="3"><a href="javascript:reply_submit()" class="w3-button w3-black">[회원가입]</a></td>
         </tr>
     </table>
 </form>

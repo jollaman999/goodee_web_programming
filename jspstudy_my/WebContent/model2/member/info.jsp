@@ -22,39 +22,50 @@
     <title>회원정보보기</title>
 </head>
 <body>
-<table>
-    <caption>회원 정보 보기</caption>
-    <tr>
-        <td rowspan="6">
-            <img src="img/${mem.picture}" width="110" class="w3-round">
-        </td>
-        <td>아이디</td>
-        <td>${mem.id}</td>
-    </tr>
-    <tr>
-        <td>이름</td>
-        <td>${mem.name}</td>
-    </tr>
-    <tr>
-        <td>성별</td>
-        <td>${mem.gender == 1?"남":"여"}</td>
-    </tr>
-    <tr>
-        <td>전화</td>
-        <td>${mem.tel}</td>
-    </tr>
-    <tr>
-        <td>이메일</td>
-        <td>${mem.email}</td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <a href="updateForm.me?id=${mem.id}">[수정]</a>
-            <c:if test="${mem.id != 'admin'}">
-                <a href="deleteForm.me?id=${mem.id}">[탈퇴]</a>
-            </c:if>
-        </td>
-    </tr>
-</table>
+<div class="w3-card w3-round w3-white">
+    <div class="w3-container">
+        <div style="margin-top: 25px; margin-bottom: 25px;">
+            <h4 class="w3-center">회원 정보 보기</h4>
+            <p class="w3-center">
+                <c:choose>
+                    <c:when test="${mem.picture.length() == 0}">
+                        <img src="img/noimage.png" class="w3-circle" style="height:150px; width:150px">
+                    </c:when>
+                    <c:otherwise>
+                        <img src="img/${mem.picture}" class="w3-circle" style="height:150px; width:150px">
+                    </c:otherwise>
+                </c:choose>
+            </p>
+            <hr>
+            <div class="w3-bar-block" style="margin-top: 40px; margin-left: 35%">
+                <p><i class="fa fa-user-o fa-fw w3-margin-right w3-text-theme"></i>${mem.id}</p>
+                <p><i class="fa fa-vcard-o fa-fw w3-margin-right w3-text-theme"></i>${mem.name}</p>
+                <p>
+                    <c:choose>
+                        <c:when test="${mem.gender == 1}">
+                            <i class="fa fa-mars fa-fw w3-margin-right w3-text-theme"></i>남
+                        </c:when>
+                        <c:otherwise>
+                            <i class="fa fa-venus fa-fw w3-margin-right w3-text-theme"></i>여
+                        </c:otherwise>
+                    </c:choose>
+                </p>
+                <p><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i>${mem.tel}</p>
+                <p><i class="fa fa-envelope-o fa-fw w3-margin-right w3-text-theme"></i>${mem.email}</p>
+            </div>
+            <table>
+                <tr>
+                    <td colspan="2" class="no_border">
+                        <a href="updateForm.me?id=${mem.id}" class="w3-button w3-black">수정</a>
+                        &nbsp;&nbsp;
+                        <c:if test="${mem.id != 'admin'}">
+                            <a href="deleteForm.me?id=${mem.id}" class="w3-button w3-black">탈퇴</a>
+                        </c:if>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

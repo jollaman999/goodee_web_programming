@@ -77,7 +77,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <a href="javascript:board_submit()">[게시물 등록]</a></td>
+                <a href="javascript:board_submit()" class="w3-button w3-black">게시물 등록</a></td>
         </tr>
     </table>
 </form>

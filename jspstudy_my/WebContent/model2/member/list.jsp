@@ -68,7 +68,7 @@
                 <td>${m.name}</td>
                 <td>${m.gender == 1 ? "남자" : "여자"}</td>
                 <td>${m.tel}</td>
-                <td><a href="updateForm.me?id=${m.id}">[수정]</a>
+                <td><a href="updateForm.me?id=${m.id}">[수정]</a>&nbsp;&nbsp;
                     <c:if test="${m.id != 'admin' }">
                         <a href="javascript:del('${m.id}')">[강제탈퇴]</a>
                     </c:if></td>

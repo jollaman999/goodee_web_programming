@@ -17,7 +17,7 @@
             <td><input type="password" name="pass"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="탈퇴하기"></td>
+            <td colspan="2"><input type="submit" value="탈퇴하기" class="w3-button w3-black"></td>
         </tr>
     </table>
 </form>

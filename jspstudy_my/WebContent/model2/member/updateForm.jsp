@@ -22,7 +22,7 @@
         }
 
         function passchg_winopen() {
-            var op = "width=500, height=230, left=50,top=150";
+            var op = "width=500, height=240, left=50,top=150";
             open("passwordForm.me", "", op);
         }
 
@@ -50,7 +50,15 @@
         <caption>회원 정보 수정</caption>
         <tr>
             <td rowspan="4" valign="bottom">
-                <img src="img/${mem.picture}" width="110" id="pic" class="w3-round"><br>
+                <c:choose>
+                    <c:when test="${mem.picture.length() == 0}">
+                        <img src="img/noimage.png" width="110" id="pic" class="w3-round">
+                    </c:when>
+                    <c:otherwise>
+                        <img src="img/${mem.picture}" width="110" id="pic" class="w3-round">
+                    </c:otherwise>
+                </c:choose>
+                <br>
                 <font size="1"><a href="javascript:win_upload()">사진수정</a></font>
             </td>
             <td>아이디</td>
@@ -82,9 +90,8 @@
             <td colspan="2"><input type="text" name="email" value="${mem.email}"></td>
         </tr>
         <tr>
-            <td colspan="3"><input type="submit" value="회원수정">
-                <input type="button" value="비밀번호수정"
-                       onclick="passchg_winopen()">
+            <td colspan="3"><input type="submit" value="회원수정" class="w3-button w3-black">&nbsp;&nbsp;&nbsp;
+                <input type="button" value="비밀번호수정" onclick="passchg_winopen()" class="w3-button w3-black">
             </td>
         </tr>
     </table>

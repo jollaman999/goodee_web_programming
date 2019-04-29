@@ -84,7 +84,7 @@
         <tr>
             <td colspan="2">
                 <!-- <a href="javascript:document.f.submit()">[게시물 수정]</a> -->
-                <a href="javascript:update_submit()">[게시물 수정]</a>
+                <a href="javascript:update_submit()" class="w3-button w3-black">게시물 수정</a>
             </td>
         </tr>
     </table>

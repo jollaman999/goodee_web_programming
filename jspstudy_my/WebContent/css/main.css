@@ -44,3 +44,7 @@ a:hover {
     margin-right: 70px;
     margin-bottom: 50px;
 }
+
+.no_border {
+    border: 0px;
+}
