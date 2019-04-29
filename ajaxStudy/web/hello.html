@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="ajax.js"></script>
+    <script type="text/javascript">
+
+        function helloToServer() {
+            sendRequest("hello.jsp", "name=" + document.f.name.value, helloFromServer, "POST");
+        }
+
+        // 콜백 함수
+        /*
+        ajax.readyState
+        0 : ajax 객체 생성.
+        1 : ajax 객체 준비 상태. open 된 상태.
+        2 : ajax 객체 전송 상태. send 된 상태. 서버 응답 이전.
+        3 : ajax 객체 전송 상태. send 된 상태. 서버 응답 완료 이전
+        4 : ajax 객체 서버로 부터 응답 완료 상태
+
+        ajax.status : 서버 응답 코드
+        200 : 정상처리
+        404 : 서버 페이지 없음.
+        500 : 서버 페이지 오류 발생.
+
+        ajax.responseText : 서버에서 전송된 메세지
+       */
+        function helloFromServer() {
+            if (ajax.readyState == 4) {
+                if (ajax.status == 200) {
+                    alert(ajax.responseText);
+                    hello.innerHTML = ajax.responseText;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<form name="f">
+    <input type="text" name="name">
+    <input type="button" value="인사하기" onclick="helloToServer()">
+    <div id="hello"></div>
+</form>
+</body>
+</html>
